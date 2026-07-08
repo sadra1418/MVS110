@@ -9,7 +9,8 @@ import json
 async def api(request):
      
     if request.method == 'POST':
-        p = await main(tapic=json.loads(request.body)) 
+        p = await main(input=json.loads(request.body)) 
+        
         res = HttpResponse(json.dumps(str(p)))
         res.headers['Access-Control-Allow-Origin'] = '*'
         return  res
@@ -21,4 +22,4 @@ async def api(request):
        
             
     
-    
+     
