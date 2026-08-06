@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:3000',
+    'https://ai-chats-with-ai.onrender.com',
 ]
 
 # Application definition
