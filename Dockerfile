@@ -20,7 +20,7 @@ RUN playwright install --with-deps chromium
 
 COPY . .
 
-WORKDIR /app/back_end/sever_with_myproject
+WORKDIR /app/sever_with_myproject
 
 
 EXPOSE 10000
