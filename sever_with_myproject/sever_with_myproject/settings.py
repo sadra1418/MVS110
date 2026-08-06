@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://ai-chats-with-ai.onrender.com',
+    'ai-chats-with-ai.onrender.com',
 ]
 
 # Application definition
