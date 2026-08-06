@@ -22,7 +22,6 @@ COPY . .
 
 WORKDIR /app/back_end/sever_with_myproject
 
-//RUN python manage.py collectstatic --noinput
 
 EXPOSE 10000
 
