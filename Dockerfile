@@ -20,9 +20,11 @@ RUN playwright install --with-deps chromium
 
 COPY . .
 
-RUN python manage.py collectstatic --noinput
+
 
 WORKDIR /app/sever_with_myproject
+
+RUN python manage.py collectstatic --noinput
 
 
 EXPOSE 10000
