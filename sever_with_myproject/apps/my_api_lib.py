@@ -52,7 +52,7 @@ class Api():
             f'[data-virtual-list-item-key="{(key+1)*2}"]',
             timeout=10000
         )
-        await self.tab.wait_for_timeout(6000)
+        await self.tab.wait_for_timeout(1000)
         
 
 
