@@ -11,8 +11,8 @@ async def api(request):
     if request.method == 'POST':
         try : 
             p = await main(input=json.loads(request.body)) 
-        except :
-            p = await 'لطفا دوباره تلاش کنید اتصال نا موفق بود'
+        except  :
+            p = await main(input=json.loads(request.body)) 
 
 
         res = HttpResponse(json.dumps(str(p)))
