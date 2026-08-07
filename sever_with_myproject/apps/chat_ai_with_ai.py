@@ -1,36 +1,45 @@
 
 import asyncio
 from .my_api_lib import Api
+import datetime
 
 async def main(input):
 
   
     # create ai1
     ai_1 = Api(headlesss=True)
+    print(f'ai_1 app start{(datetime.datetime.now())}')
     await ai_1.start()
     await ai_1.new_tab()
+    print(f'ai_1 browser start{(datetime.datetime.now())}')
     await ai_1.open_ai_website(input['url_1'])
+    print(f'open website{(datetime.datetime.now())}')
     await ai_1.select_a_object(object_name='Intent')
     ############
 
     # create ai2
     ai_2 = Api(headlesss=True)
+    print(f'ai_app start{(datetime.datetime.now())}')
     await ai_2.start()
     await ai_2.new_tab()
+    print(f'ai_2 browser start {(datetime.datetime.now())}')
     await ai_2.open_ai_website(input['url_2'])
+    print(f'open website {(datetime.datetime.now())}')
     await ai_2.select_a_object(object_name='Intent')
     ############
 
     chats_history = []
+    print(input)
 
 
     # a loop for chat
     
 
     if input['dafee'] == 0:
-        print(input)
+        
         await ai_1.send_text(
-            f'سلام من یک هوش مصنوعی دیگه هستم موضوع:  {input['text']}  (در ابتدا یک متن به عنوان مسعله یا همان موضوع بحث در حد یک بندیا چهار خط داخل (/)باشد مثال => /  متن موضوع /)'
+            f'سلام من یک هوش مصنوعی دیگه هستم موضوع:  {input['text']}  (در ابتدا یک متن به عنوان مسعله یا همان موضوع بحث در حد یک بندیا چهار خط داخل (/)باشد مثال => /  متن موضوع /)',
+            input['dafee']
         )
 
         
@@ -61,7 +70,8 @@ async def main(input):
             )
 
         await ai_2.send_text(
-            f"(ما هردو هوش مصنوعی هستیم که می توانیم باهم صحبت کنیم){await ai_1.giv_text(10000 , input['dafee'])}"
+            f"(ما هردو هوش مصنوعی هستیم که می توانیم باهم صحبت کنیم){await ai_1.giv_text(10000 , input['dafee'])}",
+            input['dafee']
         )
         url_ai_2 = await ai_2.get_url()
         chats_history.append(
@@ -72,11 +82,17 @@ async def main(input):
         )
 
     else:  
-        await ai_1.send_text(f"(توضیحات  مهم برای تایین محدوده گفت و گو و نکات مهم که باید گفت و گو بر اساس این چارچوب باشه:  {input['text']}){await ai_2.giv_text(10000 , input['dafee']-1)}")
-        chats_history.append({'text':await ai_1.giv_text( dafee= input['dafee'])})
+        await ai_1.send_text(
+            f"(توضیحات  مهم برای تایین محدوده گفت و گو و نکات مهم که باید گفت و گو بر اساس این چارچوب باشه:  {input['text']}){await ai_2.giv_text(10000 , input['dafee']-1)}",
+            input['dafee']
+        )
+        chats_history.append({'text':await ai_1.giv_text(time_out=10000, dafee= input['dafee'] )})
 
-        await ai_2.send_text(f"{await ai_1.giv_text(10000, input['dafee']-1)}")
-        chats_history.append({'text':await ai_2.giv_text( dafee= input['dafee'])})
+        await ai_2.send_text(
+            f"{await ai_1.giv_text(10000, input['dafee'])}",
+            input['dafee']
+        )
+        chats_history.append({'text':await ai_2.giv_text(time_out=10000, dafee= input['dafee'])})
 
 
 

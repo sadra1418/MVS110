@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-u4h7k1xstmrr=-k^g5dga8u0f81&huxom^rr0+e$5n2nas1hrq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["ai-chats-with-ai.onrender.com"]
+ALLOWED_HOSTS = ["ai-chats-with-ai.onrender.com",'127.0.0.1']
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
