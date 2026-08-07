@@ -29,4 +29,4 @@ RUN python manage.py collectstatic --noinput
 
 EXPOSE 10000
 
-CMD ["gunicorn", "sever_with_myproject.wsgi:application", "--bind", "0.0.0.0:10000"]
+CMD ["gunicorn", "sever_with_myproject.wsgi:application", "--bind", "0.0.0.0:10000" , '--Timeout' , 18000]
