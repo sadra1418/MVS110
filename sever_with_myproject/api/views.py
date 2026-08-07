@@ -11,9 +11,9 @@ async def api(request):
     if request.method == 'POST':
         try : 
             p = await main(input=json.loads(request.body)) 
-        except  :
+        except TypeError as e:
+            print(e)
             p = await main(input=json.loads(request.body)) 
-
 
         res = HttpResponse(json.dumps(str(p)))
         res.headers['Access-Control-Allow-Origin'] = '*'
