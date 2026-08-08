@@ -46,9 +46,9 @@ class Api():
 
     async def send_text(self, text ,key):
         print('send text')
-
         await self.tab.keyboard.insert_text(text) 
         await self.tab.keyboard.press('Enter')
+        await self.tab.wait_for_timeout(6000)
         
         
 
@@ -77,7 +77,7 @@ class Api():
             
 
     async def giv_text(self ,time_out , dafee ):
-        await self.tab.wait_for_timeout(6000)
+        
         await self.tab.wait_for_selector(f'[data-virtual-list-item-key="{(dafee+1)*2}"]' , timeout=time_out)
         return await self.tab.inner_text(f'[data-virtual-list-item-key="{(dafee+1)*2}"]')
     
