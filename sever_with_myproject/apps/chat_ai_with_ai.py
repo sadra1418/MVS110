@@ -83,7 +83,7 @@ async def main(input):
 
     else:  
         await ai_1.send_text(
-            f"(توضیحات  مهم برای تایین محدوده گفت و گو و نکات مهم که باید گفت و گو بر اساس این چارچوب باشه:  {input['text']}){await ai_2.giv_text(10000 , input['dafee'])}",
+            f"(توضیحات  مهم برای تایین محدوده گفت و گو و نکات مهم که باید گفت و گو بر اساس این چارچوب باشه:  {input['text']}){await ai_2.giv_text(10000 , input['dafee']-1)}",
             input['dafee']
         )
         chats_history.append({'text':await ai_1.giv_text(time_out=10000, dafee= input['dafee'] )})
