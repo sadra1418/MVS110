@@ -25,6 +25,7 @@ class Api():
 
     async def close(self):
         """stop the browser"""
+        print('finish api')
         if self.playwrite:
             await self.playwrite.stop()
 
