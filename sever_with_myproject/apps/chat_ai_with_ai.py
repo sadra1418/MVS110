@@ -46,7 +46,7 @@ async def main(input):
         text = []
         tapic_m = []
         n = True
-        pasokhe = await ai_1.giv_text(10000 , input['dafee'])
+        pasokhe = await ai_1.giv_text(100000 , input['dafee'])
         url_ai_1 = await ai_1.get_url()
         pasokhe_tike_tike = pasokhe.split()
 
