@@ -79,10 +79,12 @@ class Api():
     async def giv_text(self ,time_out , dafee ):
 
         print('giv texe start ')
-        await self.tab.wait_for_timeout(6000)
-        print('wait is finish')
+        
         await self.tab.wait_for_selector(f'[data-virtual-list-item-key="{(dafee+1)*2}"]' , timeout=time_out)
         print('this element is true')
+
+        await self.tab.wait_for_timeout(6000)
+        print('wait is finish')
         return await self.tab.inner_text(f'[data-virtual-list-item-key="{(dafee+1)*2}"]')
         print('finish the give text')
     
