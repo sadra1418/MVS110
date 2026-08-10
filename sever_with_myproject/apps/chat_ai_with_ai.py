@@ -99,8 +99,9 @@ async def main(input):
     #___finish___#
     
     await ai_1.close()
+    print('اولی تموم شد ')
     await ai_2.close()
-
+    print('دومی هم تموم شد ')
     return chats_history
     ##############
 
