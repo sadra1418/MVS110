@@ -41,6 +41,7 @@ class Api():
 # ai api codes
     async def open_ai_website(self ,url='http://chat.deepseek.com/'):
         await self.tab.goto(url=url, wait_until='commit')
+        print(await self.tab.inner_html())
 
 
 
