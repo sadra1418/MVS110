@@ -45,3 +45,10 @@ async def test(request):
 
 def main_app(request):
     return(render(request , 'index.html'  ))
+
+
+def google_verification(request):
+    return HttpResponse(
+        "google-site-verification: googleccc612f328fb14c8.html",
+        content_type="text/html"
+    )
