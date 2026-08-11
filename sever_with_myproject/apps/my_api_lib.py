@@ -81,7 +81,7 @@ class Api():
 
         print('giv texe start ')
         
-        await self.tab.wait_for_selector(f'[data-virtual-list-item-key="{(dafee+1)*2}"]' , timeout=3000000000)
+        await self.tab.wait_for_selector(f'[data-virtual-list-item-key="{(dafee+1)*2}"]' , timeout=30000)
         print('this element is true')
 
         await self.tab.wait_for_timeout(6000)
