@@ -15,7 +15,10 @@ async def api(request):
             print(e)
             p = await main(input=json.loads(request.body)) 
 
+         print('finish main')
+
         res = HttpResponse(json.dumps(str(p)))
+          print('res is fnish')
         res.headers['Access-Control-Allow-Origin'] = '*'
         return  res
         
