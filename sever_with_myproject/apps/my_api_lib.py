@@ -41,7 +41,7 @@ class Api():
 # ai api codes
     async def open_ai_website(self ,url='http://chat.deepseek.com/'):
         await self.tab.goto(url=url, wait_until='load')
-        print(await self.tab.inner_html('[id="root"]'))
+        
 
 
 
@@ -81,7 +81,7 @@ class Api():
 
         print('giv texe start ')
         
-        await self.tab.wait_for_selector(f'[data-virtual-list-item-key="{(dafee+1)*2}"]' , timeout=time_out)
+        await self.tab.wait_for_selector(f'[data-virtual-list-item-key="{(dafee+1)*2}"]' , timeout=30000)
         print('this element is true')
 
         await self.tab.wait_for_timeout(6000)
