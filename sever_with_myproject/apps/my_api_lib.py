@@ -47,7 +47,9 @@ class Api():
     async def send_text(self, text ,key):
         print('send text')
         await self.tab.keyboard.insert_text(text) 
+        print('keyboard insert')
         await self.tab.keyboard.press('Enter')
+        print('enter click')
         await self.tab.wait_for_timeout(6000)
         
         
