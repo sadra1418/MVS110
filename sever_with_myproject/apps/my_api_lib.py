@@ -40,8 +40,7 @@ class Api():
 
 # ai api codes
     async def open_ai_website(self ,url='http://chat.deepseek.com/'):
-        await self.tab.goto(url=url, wait_until='load')
-        
+        await self.tab.goto(url=url, wait_until='commit')
 
 
 
@@ -49,7 +48,7 @@ class Api():
         print('send text')
         await self.tab.keyboard.insert_text(text) 
         await self.tab.keyboard.press('Enter')
-        print('send text is complect')
+        await self.tab.wait_for_timeout(6000)
         
         
 
@@ -78,16 +77,9 @@ class Api():
             
 
     async def giv_text(self ,time_out , dafee ):
-
-        print('giv texe start ')
         
-        await self.tab.wait_for_selector(f'[data-virtual-list-item-key="{(dafee+1)*2}"]' , timeout=30000)
-        print('this element is true')
-
-        await self.tab.wait_for_timeout(6000)
-        print('wait is finish')
+        await self.tab.wait_for_selector(f'[data-virtual-list-item-key="{(dafee+1)*2}"]' , timeout=time_out)
         return await self.tab.inner_text(f'[data-virtual-list-item-key="{(dafee+1)*2}"]')
-        print('finish the give text')
     
     
     

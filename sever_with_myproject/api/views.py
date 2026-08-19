@@ -15,10 +15,7 @@ async def api(request):
             print(e)
             p = await main(input=json.loads(request.body)) 
 
-        print('finish main')
-
         res = HttpResponse(json.dumps(str(p)))
-        print('res is fnish')
         res.headers['Access-Control-Allow-Origin'] = '*'
         return  res
         
@@ -45,10 +42,3 @@ async def test(request):
 
 def main_app(request):
     return(render(request , 'index.html'  ))
-
-
-def google_verification(request):
-    return HttpResponse(
-        "google-site-verification: googleccc612f328fb14c8.html",
-        content_type="text/html"
-    )
