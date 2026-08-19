@@ -55,7 +55,7 @@ async def main(input):
         text = []
         tapic_m = []
         n = True
-        pasokhe = await ai_1.giv_text(10000 , input['dafee'])
+        pasokhe = await ai_1.giv_text(100000 , input['dafee'])
         url_ai_1 = await ai_1.get_url()
         pasokhe_tike_tike = pasokhe.split()
 
@@ -93,7 +93,7 @@ async def main(input):
         url_ai_2 = await ai_2.get_url()
         chats_history.append(
             {
-                "text":await ai_2.giv_text(30000 , input['dafee']),
+                "text":await ai_2.giv_text(300000 , input['dafee']),
                 "url": url_ai_2
             }
         )
@@ -102,20 +102,20 @@ async def main(input):
         await ai_1.send_text(
             f"""
                 توضیحات ارسالی از کاربر برای تکمیل ،تصحیح برای ادامه گفت و گو {input['text']}
-                پاسخ هوش مصنوعی مقابل{await ai_2.giv_text(10000 , input['dafee'])}
+                پاسخ هوش مصنوعی مقابل{await ai_2.giv_text(100000 , input['dafee'])}
             """,
             input['dafee']
         )
-        chats_history.append({'text':await ai_1.giv_text(time_out=10000, dafee= input['dafee'] )})
+        chats_history.append({'text':await ai_1.giv_text(time_out=100000, dafee= input['dafee'] )})
 
         await ai_2.send_text(
             f"""
                  توضیحات ارسالی از کاربر برای تکمیل ،تصحیح برای ادامه گفت و گو {input['text']}  
-                {await ai_1.giv_text(10000, input['dafee'])}
+                {await ai_1.giv_text(100000, input['dafee'])}
             """,
             input['dafee']
         )
-        chats_history.append({'text':await ai_2.giv_text(time_out=10000, dafee= input['dafee'])})
+        chats_history.append({'text':await ai_2.giv_text(time_out=100000, dafee= input['dafee'])})
 
 
 
