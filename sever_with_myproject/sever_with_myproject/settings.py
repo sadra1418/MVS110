@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-u4h7k1xstmrr=-k^g5dga8u0f81&huxom^rr0+e$5n2nas1hrq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["ai-chats-with-ai.onrender.com",'127.0.0.1']
 
