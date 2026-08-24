@@ -44,6 +44,7 @@ class Api():
     def zai_chat(text ):
 
             chats_history=[]
+            chats_history.append({'role':'user','content':text})
     
             client = OpenAI(
                 api_key='ad207ed3588a4a3bb38226c07a8d2dda.izEUpuvxUwH7oOxb',
@@ -52,7 +53,7 @@ class Api():
     
             message = client.chat.completions.create(
                 model='glm-4.7-flash',
-                messages = chats_history.append({'role':'user','content':text})
+                messages = chats_history
             )
 
             return(message.choices[0].message.content)
