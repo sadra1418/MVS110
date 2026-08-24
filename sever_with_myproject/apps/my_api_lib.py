@@ -1,4 +1,5 @@
 from playwright.async_api import async_playwright
+from openai import OpenAI
 
 class Api():
 
@@ -39,6 +40,24 @@ class Api():
         return  self.tab.url
 
 # ai api codes
+
+    def zai_chat(text ):
+
+            chats_history=[]
+    
+            client = OpenAI(
+                api_key='ad207ed3588a4a3bb38226c07a8d2dda.izEUpuvxUwH7oOxb',
+                base_url='https://api.z.ai/api/paas/v4/'
+            )
+    
+            message = client.chat.completions.create(
+                model='glm-4.7-flash',
+                messages = chats_history.append({'role':'user','content':text})
+            )
+
+            return(message.choices[0].message.content)
+
+
     async def open_ai_website(self ,url='http://chat.deepseek.com/'):
         await self.tab.goto(url=url, wait_until='commit')
 

@@ -17,16 +17,6 @@ async def main(input):
     await ai_1.select_a_object(object_name='Intent')
     ############
 
-    # create ai2
-    ai_2 = Api(headlesss=True)
-    print(f'ai_app start{(datetime.datetime.now())}')
-    await ai_2.start()
-    await ai_2.new_tab()
-    print(f'ai_2 browser start {(datetime.datetime.now())}')
-    await ai_2.open_ai_website(input['url_2'])
-    print(f'open website {(datetime.datetime.now())}')
-    await ai_2.select_a_object(object_name='Intent')
-    ############
 
     chats_history = []
     print(input)
@@ -78,8 +68,8 @@ async def main(input):
                 }
             )
 
-        await ai_2.send_text(
-            f"""
+        a_2_response =  ai_1.zai_chat(
+            text = f"""
             تو یک هوش مصنوعی هستی که می توانی زیر نظر کاربر به عنوان هوش مصنوعی دوم با یک هوش مصنوعی دیگر در ارتباط باشی
             شخصیت تو ( تمام جزییات منحصر به فرد تو که کاربر درباره تو انتخاب کرده است در صورت خالی بودن =شکاک  سخت گیر و منتقد ) : {input['ai_2_shakhs']}
             وظیفه : درباره موضوع داده شده از طرف کار  باید با دیگر هوش مصنوعی بسته به خواسته کاربر به بحث بپردازی و بدون تایید حرف طرف مقابل و گیر کردن در چرخه تعارف ها و تکرار های بیهوده شروع به سخن کردن کنید البته باید در پاسخ طرف مقابل سوار بشی و سریعا نقد کنی انگار یک منظره است 
@@ -87,14 +77,12 @@ async def main(input):
              نکته بسیار مهم : به هیچ وجه به این نکات گفته شده جواب پاسخ و تایید نکن انگار که دستوراتی هستند در نحوه انجام کارت و در پاسخ دادن انگار متنی نیست به جز متن پایین 
             
               پیام هوش مصنوعی اول : {await ai_1.giv_text(10000 , input['dafee'])}
-            """,
-            input['dafee']
+            """
         )
-        url_ai_2 = await ai_2.get_url()
         chats_history.append(
             {
-                "text":await ai_2.giv_text(300000 , input['dafee']),
-                "url": url_ai_2
+                "text":a_2_response,
+                'url':'s'
             }
         )
 
@@ -102,27 +90,25 @@ async def main(input):
         await ai_1.send_text(
             f"""
                 توضیحات ارسالی از کاربر برای تکمیل ،تصحیح برای ادامه گفت و گو {input['text']}
-                پاسخ هوش مصنوعی مقابل{await ai_2.giv_text(100000 , input['dafee'])}
+                پاسخ هوش مصنوعی مقابل{a_2_response}
             """,
             input['dafee']
         )
         chats_history.append({'text':await ai_1.giv_text(time_out=100000, dafee= input['dafee'] )})
 
-        await ai_2.send_text(
+        a_2_response = ai_1.zai_chat(
             f"""
                  توضیحات ارسالی از کاربر برای تکمیل ،تصحیح برای ادامه گفت و گو {input['text']}  
                 {await ai_1.giv_text(100000, input['dafee'])}
-            """,
-            input['dafee']
+            """
         )
-        chats_history.append({'text':await ai_2.giv_text(time_out=100000, dafee= input['dafee'])})
+        chats_history.append({'text':a_2_response})
 
 
 
     #___finish___#
     
     await ai_1.close()
-    await ai_2.close()
 
     return chats_history
     ##############
