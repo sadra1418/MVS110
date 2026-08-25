@@ -41,18 +41,19 @@ class Api():
 
 # ai api codes
 
-    def zai_chat(text ):
+    def zai_chat(self , text ):
 
             chats_history=[]
             chats_history.append({'role':'user','content':text})
+            print(chats_history)
     
             client = OpenAI(
                 api_key='ad207ed3588a4a3bb38226c07a8d2dda.izEUpuvxUwH7oOxb',
                 base_url='https://api.z.ai/api/paas/v4/'
             )
-    
+            print('client created')
             message = client.chat.completions.create(
-                model='glm-4.7-flash',
+                model='glm-4.5-flash',
                 messages = chats_history
             )
 
@@ -60,11 +61,12 @@ class Api():
 
 
     async def open_ai_website(self ,url='http://chat.deepseek.com/'):
-        await self.tab.goto(url=url, wait_until='commit')
+        await self.tab.goto(url=url, wait_until='domcontentloaded')
 
 
 
-    async def send_text(self, text ,key):
+    async def send_text(self, text ):
+        await self.tab.click('[class="_9f2341b _18572c1"]') 
         print('send text')
         await self.tab.keyboard.insert_text(text) 
         print('keyboard insert')
